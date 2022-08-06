@@ -5,7 +5,7 @@ RUN apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
     add-apt-repository ppa:ubuntu-toolchain-r/test && \
     apt-get update -y && \
-    apt-get install -y openjdk-7-jdk nano python3.6 git-core gnupg flex bison gperf build-essential \
+    apt-get install -y openjdk-7-jdk nano python3.9 git-core gnupg flex bison gperf build-essential \
     zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \
     lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache \
     libgl1-mesa-dev libxml2-utils xsltproc unzip mtools u-boot-tools \
@@ -15,9 +15,7 @@ RUN apt-get install -y software-properties-common && \
 RUN printf "deb http://security.ubuntu.com/ubuntu xenial-security main\ndeb http://cz.archive.ubuntu.com/ubuntu xenial main universe" >> /etc/apt/sources.list
 
 RUN apt-get update
-
-#RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-#RUN apt install git-lfs
+RUN apt-get install -y util-linux
 
 RUN apt-get install -y gcc-4.9 g++-4.9
 
@@ -27,7 +25,7 @@ RUN ln -s /usr/bin/gcc-4.9 /usr/bin/gcc && ln -s /usr/bin/g++-4.9 /usr/bin/g++
 RUN apt-get install binutils
 ENV PATH="/usr/lib/binutils-2.26/bin:$PATH"
 
-RUN export USER=$(whoami)
+ENV USER="root"
 
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo && \
     chmod +x /usr/local/bin/repo
