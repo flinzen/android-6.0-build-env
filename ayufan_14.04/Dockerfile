@@ -15,6 +15,7 @@ RUN apt-get install -y software-properties-common && \
 RUN printf "deb http://security.ubuntu.com/ubuntu xenial-security main\ndeb http://cz.archive.ubuntu.com/ubuntu xenial main universe" >> /etc/apt/sources.list
 
 RUN apt-get update
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y util-linux
 
 RUN apt-get install -y gcc-4.9 g++-4.9
