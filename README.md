@@ -27,7 +27,7 @@ apt-get install curl
 
 4.1. Install git-lfs
 ```
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 apt install git-lfs
 ```
 
