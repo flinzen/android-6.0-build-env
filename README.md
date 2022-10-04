@@ -34,7 +34,7 @@ apt install git-lfs
 4.2 In Android directory
 ```
 cd vendor/opengapps/sources/
-for d in ./*/ ; do (cd  && git lfs pull); done
+for d in ./*/ ; do (cd $d && git lfs pull); done
 ```
 
 If nothing happens or error appears checkout master branch in subdirectories and use ```git lfs pull``` command manually
