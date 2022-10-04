@@ -1,5 +1,8 @@
-1. Checkout http://source.android.com/source/downloading.html
-1.1. Create a new directory:
+1. Read instruction http://source.android.com/source/downloading.html
+
+1.1. install repo: https://gerrit.googlesource.com/git-repo/+/refs/heads/master/README.md
+
+1.2. Create a new directory:
   ```
   mkdir android
   cd android
