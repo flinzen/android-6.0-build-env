@@ -1,34 +1,57 @@
-1. https://github.com/Callahan633/local_manifests/tree/my-hacks
+1. Checkout http://source.android.com/source/downloading.html
+1.1. Create a new directory:
+  ```
+  mkdir android
+  cd android
+  ```
 
-2. docker build ayufan_14.04:latest
+2. Initialize manifests:
+  ```
+  repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r74 --depth=1
+  git clone https://github.com/flinzen/local_manifests -b my-hacks .repo/local_manifests
+  ```
 
-3. ./run-build.sh
+3. Checkout sources:
+  ```
+  repo sync -c
+  ```
 
 4.
+```
 apt-get update
 apt-get install curl
+```
 
+4.1. Install git-lfs
+```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 apt install git-lfs
+```
 
-5. In Android directory
+4.2 In Android directory
+```
 cd vendor/opengapps/sources/
-"for d in ./*/ ; do (cd  && git lfs pull); done"
+for d in ./*/ ; do (cd  && git lfs pull); done
+```
+
+If nothing happens or error appears checkout master branch in subdirectories and use ```git lfs pull``` command manually
+
+5. docker build -t ayufan_14.04:latest ayufan_14.04/.
+
+6. ./run-build.sh
 
 
-If sdcard_image command not working: apt-get install util-linux
+7. Compile sources:
+  ```
+  source build/envsetup.sh
+  # tulip_chihpd-eng: use for normal Android build with Launcher
+  lunch tulip_chiphd-eng
+  make -jN
+  ```
+  where N number of threads
 
-6. after successfull make and packing image with sdcard_image command
-Use binaries in blob directory
+8. after successfull make and packing image with sdcard_image pine.img.gz sopine
 
-sudo dd conv=notrunc bs=1k seek=8 of=/dev/your_sd_card if=blob/boot0-pine64-sopine.bin
-sudo dd conv=notrunc bs=1k seek=19096 of=/dev/your_sd_card if=blob/u-boot-pine64-sopine.bin
-
-7.
-add in uEnv.txt in disp section
-disp_screen0=hdmi
-disp_mode=screen0
-
-8. wait around 10-15 minutes ))00))0))))
+9. wait around 10-15 minutes
 
 
