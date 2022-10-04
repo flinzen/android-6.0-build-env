@@ -39,7 +39,11 @@ for d in ./*/ ; do (cd  && git lfs pull); done
 
 If nothing happens or error appears checkout master branch in subdirectories and use ```git lfs pull``` command manually
 
-5. docker build -t ayufan_14.04:latest ayufan_14.04/.
+5. Install docker engine: https://docs.docker.com/engine/install/ubuntu/ then
+
+```
+docker build -t ayufan_14.04:latest ayufan_14.04/.
+```
 
 6. ./run-build.sh
 
